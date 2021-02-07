@@ -1,0 +1,294 @@
+html[ng-app="uaas"] .toolbar {
+    max-width: 100%;
+}
+
+.toolbar {
+	margin-top: 0;
+}
+.toolbar .subnav{
+	margin-top: 0;
+}
+
+
+.toolbar .container {
+	flex-direction: row;
+}
+
+.toolbar input[type=search] {
+    display: block;
+}
+
+uaas-portal-portal-notification .container,
+.container{
+    max-width: 1524px;
+    padding: 0 15px;
+}
+
+.projectList{
+    width: 100%;
+}
+
+.projects .project {
+    display: block;
+    flex: none;
+	width: 100%;
+	height: auto;
+}
+
+.projects .project .project-inner {
+    flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+            padding: 20px;
+        	cursor: pointer;
+        	    align-items: start;
+
+        
+}
+
+.project-identity{
+ display: none;
+}
+
+.project-name{
+margin: 0 0 10px 0;
+width: 100%;
+max-width: 100%;
+text-align: left;
+font-size:1.1rem;
+}
+
+
+.action,
+.action a{
+display:block;
+position:absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+z-index:10;
+height: 100%;
+width: 100%;
+max-height: 100%;
+max-width: 100%;
+color: transparent;
+background: transparent;
+padding: 0;
+}
+
+.action a{
+	transition: background-color .125s ease-in-out;
+}
+
+.action a:hover{
+  background-color: rgba(52, 197, 132, .1);
+}
+
+.latest-activity {
+	position: relative;
+	margin:0;
+	text-align: left;
+	width: 100%;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.latest-activity:after{
+	content: "";
+	display: block;
+	position:absolute;
+	left: -20px;
+	right:  -20px;
+	bottom: 0;
+	border-bottom: 1px solid #e9e9eb;
+}
+
+.latest-activity *{
+	font-size:.85rem;
+}
+
+.latest-activity .timeago{
+		margin-bottom: 5px;
+}
+
+.latest-activity .message{
+		max-width: 100%;
+}
+
+.latest-activity .timeago:after{
+	content: ":";
+}
+
+.projectDetails{
+	display: block;
+	text-align: left;
+}
+
+.environment,
+.environment .environment-status,
+.environment strong{
+	display: inline-block;
+}
+
+.environment{
+	margin-bottom: 0;
+	padding-right: 0;
+	position: relative;
+	width: 100%;
+}
+
+.environment .environmentStatusWrapper {
+	width: 130px;
+	float: left;
+	margin-bottom: 3px;
+}
+.environment .environmentVersions{
+	float: left;
+	
+}
+
+.environment .versionInfo {
+    font-size: .7rem;
+    border-right: 1px solid #d8d7d9;
+    color: #817f85;
+    padding-right: 5px;
+    margin-right: 5px;
+}
+
+.environment .versionInfo:last-of-type{
+	border: none;
+}
+
+.projectSummary{
+	margin-bottom: 15px;
+}
+
+.projectSummary .projectInfoInner > strong {
+	margin-right: 15px;
+} 
+
+
+.projectInfoInner strong >span{
+	font-weight: normal;
+}
+
+
+.baselineReference{
+	margin-left: 15px;
+	font-weight: normal;
+	color:#817f85;
+	font-size: 1rem;
+}
+
+.usageWrapper{
+	position: relative;
+	width:100%;
+	text-align:left;
+	margin-top: 10px;
+	
+}
+.usageWrapper:before{
+	content: "";
+	display: block;
+	position:absolute;
+	left: -20px;
+	right:  -20px;
+	top: 0;
+	border-bottom: 1px solid #e9e9eb;
+}
+.usage{
+	padding-top: 10px;
+	width: 50%;
+	max-width: 250px;
+	float: left;
+    font-size: .85rem;
+    padding-right: 30px;
+}
+
+.usage > span{
+	width: 100%;
+	margin-bottom: 5px;
+}
+.usage .progressBar {
+	width: 100%;
+	background-color: #bbbabf;
+	border-radius: 3px;
+	  height: 6px;
+	  border-radius: 6px;
+}
+
+.usage .progressBarFill {
+	display: block;
+	border-radius: 3px;
+    height: 100%;
+    max-width: 100%;
+    border-radius: 6px;
+    background-color: #3544b1;
+}
+
+.usage .progressBarFill.danger {
+    background-color: #fe4039;
+}
+
+@media (min-width: 1280px){
+.project-name{
+	padding-bottom: 10px;
+	margin-bottom: 12px;
+	position: relative;
+	overflow: visible;
+}
+
+.project-name:after{
+	content: "";
+	display: block;
+	position:absolute;
+	left: -20px;
+	right:  -20px;
+	bottom: 0;
+	border-bottom: 1px solid #e9e9eb;
+}
+
+.latest-activity{
+	max-width: 400px;
+}
+
+
+
+.projects .project .project-inner {
+flex-direction: column;
+}
+
+.latest-activity {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+.latest-activity:after {
+
+	display:none;
+}
+
+.projectDetails {
+    display: flex;
+    flex-direction:row;
+    position:absolute;
+    top: 0;
+    right: 0;
+    left: 400px;
+    padding: 20px;
+    padding-top: 63px;
+    padding-left: 0;
+}
+
+.environment {
+       width: auto;
+       margin-right: 20px;
+}
+
+.environment .environmentStatusWrapper {
+    width: auto;
+    float: none;
+    margin-bottom: 5px;
+}
+
+
+}
