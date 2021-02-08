@@ -3,9 +3,7 @@ const portalContent = document.querySelector('.portal__content');
 
 
 function getProjectDetails(project, projectData){
-	
-		console.log(projectData);
-		
+
 		if(projectData.upstreamProjectName){
 			const baseLineProject = document.createElement('span');
 			baseLineProject.classList.add("baselineReference");
@@ -28,8 +26,8 @@ function getProjectDetails(project, projectData){
 				standardProjects.innerHTML =  parseFloat(standardProjects.innerHTML) + 1;
 			break;
 			case "Studio":
-				const proffessionalProjects = portalContent.querySelector('.proValue');
-				proffessionalProjects.innerHTML =  parseFloat(proffessionalProjects.innerHTML) + 1;
+				const professionalProjects = portalContent.querySelector('.proValue');
+				professionalProjects.innerHTML =  parseFloat(professionalProjects.innerHTML) + 1;
 				break;
 			}
 	
@@ -124,7 +122,6 @@ function getProjectDetails(project, projectData){
 			const contentNodes = data[2];
 			const mediaSize = data[3];
 			const bandwidth = data[4];
-			console.log(data)
 			const hostnameUsage = `<div class="usage"><span>Custom Domains</span>
 			<div class="progressBar">
 				<span class="progressBarFill ${((hostnames / limits.AllowedCustomHostnames) *100) > 90 ? "danger" : ""}" style="width: ${(hostnames / limits.AllowedCustomHostnames) *100}%;"></span>
@@ -172,7 +169,7 @@ function prepareProjectSummary(){
 	projectInfo.classList.add('projectInfo');
 	const projectInfoInner = document.createElement('p');
 	projectInfoInner.classList.add('projectInfoInner');
-	projectInfoInner.innerHTML = `<strong>Total:&nbsp;<span class="totalValue">0</span></strong><strong>Starter:&nbsp;<span class="starterValue">0</span></strong><strong>Standard:&nbsp;<span class="standardValue">0</span></strong><strong>Proffessional:&nbsp;<span class="proValue">0</span></strong>`;
+	projectInfoInner.innerHTML = `<strong>Total:&nbsp;<span class="totalValue">0</span></strong><strong>Starter:&nbsp;<span class="starterValue">0</span></strong><strong>Standard:&nbsp;<span class="standardValue">0</span></strong><strong>Professional:&nbsp;<span class="proValue">0</span></strong>`;
 	
 	projectInfo.append(projectInfoInner);
 	summary.append(projectInfo);
