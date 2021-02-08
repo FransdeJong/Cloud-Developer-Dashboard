@@ -26,4 +26,5 @@ Setup:
 
 Todo:
 - Add alert panel above the project list
+- Optimization (where possible).
 - Don't know yet...
