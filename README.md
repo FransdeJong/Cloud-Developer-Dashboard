@@ -3,7 +3,7 @@ All developer information directly on the dashboard
 
 This is a simple project that lets you see all important Umbraco Cloud project information on the dashboard.
 This is build without support of HQ so if they change anything that my code uses this will probably create a mess.
-If that happens disable this and let me know and I'll see if it's possible to fix it.
+It relies on the fact that the favorite star in a project contains the project ID. If that’s gone for some reason than this project will become useless since there is no other reference to project id’s.If that happens disable this and let me know and I'll see if it's possible to fix it.
 
 For now it show:
 - Baseline name
@@ -26,4 +26,5 @@ Setup:
 
 Todo:
 - Add alert panel above the project list
+- Optimization (where possible).
 - Don't know yet...
