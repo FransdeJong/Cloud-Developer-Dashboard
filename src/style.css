@@ -237,6 +237,10 @@ uaas-portal-portal-notification .container,
     background-color: #fe4039;
 }
 
+.favorite {
+    z-index: 15;
+}
+
 @media (min-width: 1280px) {
     .project-name {
         padding-bottom: 10px;
