@@ -127,26 +127,38 @@ function getProjectUsage(project, projectData) {
         }));
     }).then(function (data) {
         const limits = data[0];
-        const hostnames = data[1];
-        const contentNodes = data[2];
-        const mediaSize = data[3];
-        const bandwidth = data[4];
+        const hostnames = (data[1] / limits.AllowedCustomHostnames) * 100;
+        const contentNodes = (data[2] / limits.AllowedContentNodes) * 100;
+        const mediaSize = (data[3] / limits.AllowedMedia) * 100;
+        const bandwidth = (data[4] / limits.AllowedBandwidth) * 100;
         const hostnameUsage = `<div class="usage"><span>Custom Domains</span>
-			<div class="progressBar">
-				<span class="progressBarFill ${((hostnames / limits.AllowedCustomHostnames) * 100) > 90 ? "danger" : ""}" style="width: ${(hostnames / limits.AllowedCustomHostnames) * 100}%;"></span>
-			</div></div>`
+        <div class="progressBar">
+            <span class="progressBarFill 
+            ${ hostnames > 90 && hostnames < 100 ? "warning" : ""}
+            ${ hostnames >= 100 ? "danger" : ""}" 
+            style="width: ${hostnames}%;"></span>
+        </div></div>`
         const contentNodesUsage = `<div class="usage"><span>Content nodes</span>
-			<div class="progressBar">
-				<span class="progressBarFill ${((contentNodes / limits.AllowedContentNodes) * 100) > 90 ? "danger" : ""}" style="width: ${(contentNodes / limits.AllowedContentNodes) * 100}%;"></span>
-			</div></div>`
+        <div class="progressBar">
+            <span class="progressBarFill 
+            ${ contentNodes > 90 && hostnames < 100 ? "warning" : ""}
+            ${ contentNodes >= 100 ? "danger" : ""}"
+            style="width: ${contentNodes}%;"></span>
+        </div></div>`
         const mediaSizeUsage = `<div class="usage"><span>Media storage</span>
-			<div class="progressBar">
-				<span class="progressBarFill ${((mediaSize / limits.AllowedMedia) * 100) > 90 ? "danger" : ""}" style="width: ${(mediaSize / limits.AllowedMedia) * 100}%;"></span>
-			</div></div>`
+        <div class="progressBar">
+            <span class="progressBarFill 
+            ${ mediaSize > 90 && hostnames < 100 ? "warning" : ""}
+            ${ mediaSize >= 100 ? "danger" : ""}"
+            style="width: ${mediaSize}%;"></span>
+        </div></div>`
         const bandwidthUsage = `<div class="usage"><span>Bandwidth</span>
-			<div class="progressBar">
-				<span class="progressBarFill ${((bandwidth / limits.AllowedBandwidth) * 100) > 90 ? "danger" : ""}" style="width: ${(bandwidth / limits.AllowedBandwidth) * 100}%;"></span>
-			</div></div>`
+        <div class="progressBar">
+            <span class="progressBarFill 
+            ${ bandwidth > 90 && hostnames < 100 ? "warning" : ""}
+            ${ bandwidth >= 100 ? "danger" : ""}"
+            style="width: ${bandwidth}%;"></span>
+        </div></div>`
         usage.insertAdjacentHTML('beforeend', hostnameUsage);
         usage.insertAdjacentHTML('beforeend', contentNodesUsage);
         usage.insertAdjacentHTML('beforeend', mediaSizeUsage);

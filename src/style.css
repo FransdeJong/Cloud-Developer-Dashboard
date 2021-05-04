@@ -233,6 +233,11 @@ uaas-portal-portal-notification .container,
     background-color: #3544b1;
 }
 
+.usage .progressBarFill.warning
+{
+	background-color: #f79c37;
+}
+
 .usage .progressBarFill.danger {
     background-color: #fe4039;
 }
