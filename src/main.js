@@ -95,70 +95,49 @@ function getProjectUsage(project, projectData) {
     const usage = document.createElement('div');
     usage.classList.add('usageWrapper');
 
-    Promise.all([
-        fetch("https://www.s1.umbraco.io/api/usage/GetUsagePlanLimitations", {
-            "headers": {
-                "x-project-id": projectData.projectId,
-            }
-        }),
-        fetch("https://www.s1.umbraco.io/api/usage/GetUsageCustomHostnames", {
-            "headers": {
-                "x-project-id": projectData.projectId,
-            }
-        }),
-        fetch("https://www.s1.umbraco.io/api/usage/GetUsageContentNodes", {
-            "headers": {
-                "x-project-id": projectData.projectId,
-            }
-        }),
-        fetch("https://www.s1.umbraco.io/api/usage/GetUsageMediaSize", {
-            "headers": {
-                "x-project-id": projectData.projectId,
-            }
-        }),
-        fetch("https://www.s1.umbraco.io/api/usage/GetUsageBandwidth", {
-            "headers": {
-                "x-project-id": projectData.projectId,
-            }
-        })
-    ]).then(function (responses) {
-        return Promise.all(responses.map(function (response) {
-            return response.json();
-        }));
-    }).then(function (data) {
-        const limits = data[0];
-        const hostnames = (data[1] / limits.AllowedCustomHostnames) * 100;
-        const contentNodes = (data[2] / limits.AllowedContentNodes) * 100;
-        const mediaSize = (data[3] / limits.AllowedMedia) * 100;
-        const bandwidth = (data[4] / limits.AllowedBandwidth) * 100;
+	fetch("https://www.s1.umbraco.io/api/ucp/usage/usage", {
+        "headers": {
+            "x-project-id": projectData.projectId,
+        }
+    }).then(response => response.json()
+    ).then(function (data) {
+    	const usageData = data.Usage;
+    	const bandwidthStat = usageData.filter(obj => {  return obj.Name == "Bandwidth"})[0];
+    	const mediaStorageStat = usageData.filter(obj => {  return obj.Name == "Media Storage"})[0];
+    	const customDomainsStat = usageData.filter(obj => {  return obj.Name == "Custom Domains"})[0];
+    	const contentStat = usageData.filter(obj => {  return obj.Name == "Content Nodes"})[0];
+    	const hostnames = (customDomainsStat.Value / Number(customDomainsStat.Limit)) * 100;
+        const contentNodes = (contentStat.Value / Number(contentStat.Limit)) * 100;
+        const mediaSize = (mediaStorageStat.Value / Number(mediaStorageStat.Limit)) * 100;
+        const bandwidth = (bandwidthStat.Value / Number(bandwidthStat.Limit)) * 100;
         const hostnameUsage = `<div class="usage"><span>Custom Domains</span>
-        <div class="progressBar">
-            <span class="progressBarFill 
-            ${ hostnames > 90 && hostnames < 100 ? "warning" : ""}
-            ${ hostnames >= 100 ? "danger" : ""}" 
-            style="width: ${hostnames}%;"></span>
-        </div></div>`
+			<div class="progressBar">
+				<span class="progressBarFill 
+				${ hostnames > 90 && hostnames < 100 ? "warning" : ""}
+				${ hostnames >= 100 ? "danger" : ""}" 
+				style="width: ${hostnames}%;"></span>
+			</div></div>`
         const contentNodesUsage = `<div class="usage"><span>Content nodes</span>
-        <div class="progressBar">
-            <span class="progressBarFill 
-            ${ contentNodes > 90 && hostnames < 100 ? "warning" : ""}
-            ${ contentNodes >= 100 ? "danger" : ""}"
-            style="width: ${contentNodes}%;"></span>
-        </div></div>`
+			<div class="progressBar">
+				<span class="progressBarFill 
+				${ contentNodes > 90 && hostnames < 100 ? "warning" : ""}
+				${ contentNodes >= 100 ? "danger" : ""}"
+				style="width: ${contentNodes}%;"></span>
+			</div></div>`
         const mediaSizeUsage = `<div class="usage"><span>Media storage</span>
-        <div class="progressBar">
-            <span class="progressBarFill 
-            ${ mediaSize > 90 && hostnames < 100 ? "warning" : ""}
-            ${ mediaSize >= 100 ? "danger" : ""}"
-            style="width: ${mediaSize}%;"></span>
-        </div></div>`
+			<div class="progressBar">
+				<span class="progressBarFill 
+				${ mediaSize > 90 && hostnames < 100 ? "warning" : ""}
+				${ mediaSize >= 100 ? "danger" : ""}"
+				style="width: ${mediaSize}%;"></span>
+			</div></div>`
         const bandwidthUsage = `<div class="usage"><span>Bandwidth</span>
-        <div class="progressBar">
-            <span class="progressBarFill 
-            ${ bandwidth > 90 && hostnames < 100 ? "warning" : ""}
-            ${ bandwidth >= 100 ? "danger" : ""}"
-            style="width: ${bandwidth}%;"></span>
-        </div></div>`
+			<div class="progressBar">
+				<span class="progressBarFill 
+				${ bandwidth > 90 && hostnames < 100 ? "warning" : ""}
+				${ bandwidth >= 100 ? "danger" : ""}"
+				style="width: ${bandwidth}%;"></span>
+			</div></div>`
         usage.insertAdjacentHTML('beforeend', hostnameUsage);
         usage.insertAdjacentHTML('beforeend', contentNodesUsage);
         usage.insertAdjacentHTML('beforeend', mediaSizeUsage);
