@@ -1,6 +1,9 @@
 # Cloud-Developer-Dashboard
 All developer information directly on the dashboard
 
+**This project is archived since the lovely people of the Umbraco Cloud team made a dashboard that has all the features this offered and even more!
+**
+
 This is a simple project that lets you see all important Umbraco Cloud project information on the dashboard.
 This is build without support of HQ so if they change anything that my code uses this will probably create a mess.
 It relies on the fact that the favorite star in a project contains the project ID. If that’s gone for some reason than this project will become useless since there is no other reference to project id’s.If that happens disable this and let me know and I'll see if it's possible to fix it.
