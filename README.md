@@ -1,8 +1,10 @@
-# Cloud-Developer-Dashboard
-All developer information directly on the dashboard
-
 **This project is archived since the lovely people of the Umbraco Cloud team made a dashboard that has all the features this offered and even more!**
 
+
+
+
+# Cloud-Developer-Dashboard
+All developer information directly on the dashboard
 
 This is a simple project that lets you see all important Umbraco Cloud project information on the dashboard.
 This is build without support of HQ so if they change anything that my code uses this will probably create a mess.
